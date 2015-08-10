@@ -1,15 +1,22 @@
-define (["jquery", "modules/draw"], function($, draw) {
+define (["jquery", "jquerymobile", "modules/draw"], function($, jqm, draw) {
     var board = {};
   
     board.render = function() {
         var n = Math.sqrt(board.cellCount);
         var obj = $("#board");
+        var windowWidth = $(document).width();
+        var windowHeight = $(document).height();
+        var dim = Math.min(windowWidth, windowHeight) - 2 * (n+1);
+        board.cellDim = Math.floor(dim / n);
+        console.log("dim " + board.cellDim);
+        
         for (var i=0; i<n; i++) {
             for (var k=0; k<n; k++) {
                 var id = i*n + k;
                 var cell =  $("<canvas>", {'id':id, 'class':"cell"});
-                cell.attr('width', 100);
-                cell.attr('height', 100);
+                cell.attr('width', board.cellDim);
+                cell.attr('height', board.cellDim);
+                
                 obj.after(cell);
                 obj = cell;
             }
@@ -24,7 +31,7 @@ define (["jquery", "modules/draw"], function($, draw) {
             count = 9;
         board.cellCount = count;
         board.render();
-        draw.init();
+        draw.init(board.cellDim);
         board.registerEvents();
     };
 
@@ -36,7 +43,7 @@ define (["jquery", "modules/draw"], function($, draw) {
         console.log("cell clicked");
         var cellId = ($(this).attr('id'));
         
-        draw.O(cellId);
+        draw.X(cellId);
     };
     
     board.setCellCount = function(count) {

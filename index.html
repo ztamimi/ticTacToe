@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" href="css/board.css">
     </head>
     <body>
-        <div data-role="page" id="boardPage">
+        <div data-role="page" id="startPage" data-theme="b">
+            <div data-role="header">
+                <h1>Tic Tac Toe</h1>
+            </div>
+            <div data-role="content">
+            <form>
+            <select id="boardSize">
+                <option value=9>3x3</option>
+                <option value=16>4x4</option>
+                <option value=25>5x5</option>
+            </select>
+            <select id="playerCount">
+                <option value="2">2 players</option>
+                <option value="3">3 players</option>
+                <option value="4">4 players</option>
+            </select>
+            <input type="text" id="playerName" placeholder="your name">
+            <input type="button" id="startBtn" value="Start Game">
+            </form>
+            </div>
+        </div>
+        <div data-role="page" id="boardPage" data-theme="b">
             <div id="board"></div>
             <!--
             <canvas width="100" height="100" id="1" class="cell"></canvas>

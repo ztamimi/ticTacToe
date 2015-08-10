@@ -1,9 +1,12 @@
-define (["modules/game"], function(game) {
+define (["modules/start", "modules/game"], function(start, game) {
     
     return function() {
         console.log("main");
-        game.init();
-        game.initTurn();
+        
+        start.init();
+        
+        //game.init();
+        //game.initTurn();
     };
      
 });
