@@ -11,7 +11,7 @@ define (["jquery", "jquerymobile", "modules/game"], function($, jqm, game) {
     };
 
     start.registerEvents = function() {
-        $("#startBtn").on("click", start.onClick);
+        $("startPage") > $("#startBtn").on("click", start.onClick);
     };
 
     start.onClick = function() {

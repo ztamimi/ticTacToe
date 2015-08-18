@@ -1,5 +1,5 @@
 define (["modules/board"], function(board) {
-    var game = {};
+    var game = {boardSize: null, playerCount: null};
     
     game.players = ['Ali', 'Sami'];
     
